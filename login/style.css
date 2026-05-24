@@ -1,174 +1,163 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d0d;
+  --panel: #141414;
+  --border: #2a2a2a;
+  --accent: #c8f04a;
+  --text: #e8e8e8;
+  --muted: #555;
+  --error: #ff5f5f;
 }
-.bg-img{
-  background: url('bg.jpg');
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  color: var(--text);
+  overflow: hidden;
 }
-.bg-img:after{
-  position: absolute;
+
+body::before {
   content: '';
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0,0,0,0.7);
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.3;
+  pointer-events: none;
 }
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 999;
-  text-align: center;
-  padding: 60px 32px;
-  width: 370px;
-  transform: translate(-50%,-50%);
-  background: rgba(255,255,255,0.04);
-  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-}
-.content header{
-  color: white;
-  font-size: 33px;
-  font-weight: 600;
-  margin: 0 0 35px 0;
-  font-family: 'Montserrat',sans-serif;
-}
-.field{
+
+.card {
   position: relative;
-  height: 45px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 48px 44px;
   width: 100%;
-  display: flex;
-  background: rgba(255,255,255,0.94);
+  max-width: 420px;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.field span{
-  color: #222;
-  width: 40px;
-  line-height: 45px;
-}
-.field input{
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: #222;
-  font-size: 16px;
-  font-family: 'Poppins',sans-serif;
-}
-.space{
-  margin-top: 16px;
-}
-.show{
+
+.card::before {
+  content: '';
   position: absolute;
-  right: 13px;
-  font-size: 13px;
-  font-weight: 700;
-  color: #222;
-  display: none;
-  cursor: pointer;
-  font-family: 'Montserrat',sans-serif;
+  top: -1px; left: -1px;
+  width: 40px; height: 40px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
 }
-.Password:valid ~ .show{
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 40px; height: 40px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.label-tag {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 36px;
+  color: #fff;
+}
+
+.field { margin-bottom: 20px; }
+
+.field label {
   display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
-.pass{
-  text-align: left;
-  margin: 10px 0;
-}
-.pass a{
-  color: white;
-  text-decoration: none;
-  font-family: 'Poppins',sans-serif;
-}
-.pass:hover a{
-  text-decoration: underline;
-}
-.field input[type="submit"]{
-  background: #3498db;
-  border: 1px solid #2691d9;
-  color: white;
-  font-size: 18px;
-  letter-spacing: 1px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Montserrat',sans-serif;
-}
-.field input[type="submit"]:hover{
-  background: #2691d9;
-}
-.login{
-  color: white;
-  margin: 20px 0;
-  font-family: 'Poppins',sans-serif;
-}
-.links{
-  display: flex;
-  cursor: pointer;
-  color: white;
-  margin: 0 0 20px 0;
-}
-.facebook,.instagram{
+
+.field input {
   width: 100%;
-  height: 45px;
-  line-height: 45px;
-  margin-left: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s;
 }
-.facebook{
-  margin-left: 0;
-  background: #4267B2;
-  border: 1px solid #3e61a8;
+
+.field input:focus { border-color: var(--accent); }
+.field input::placeholder { color: var(--muted); }
+
+.error-msg {
+  font-size: 12px;
+  color: var(--error);
+  margin-bottom: 20px;
+  min-height: 16px;
+  display: none;
 }
-.instagram{
-  background: #E1306C;
-  border: 1px solid #df2060;
+.error-msg.visible { display: block; }
+
+button {
+  width: 100%;
+  background: var(--accent);
+  color: #0d0d0d;
+  border: none;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  margin-top: 4px;
 }
-.facebook:hover{
-  background: #3e61a8;
+
+button:hover { opacity: 0.88; }
+button:active { transform: scale(0.98); }
+
+.footer-link {
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
 }
-.instagram:hover{
-  background: #df2060;
+
+.footer-link a { color: var(--accent); text-decoration: none; }
+.footer-link a:hover { text-decoration: underline; }
+
+.success-screen { display: none; text-align: center; }
+.success-screen.visible { display: block; }
+.login-form.hidden { display: none; }
+
+.checkmark { font-size: 48px; margin-bottom: 16px; }
+
+.success-screen h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
 }
-.links i{
-  font-size: 17px;
-}
-i span{
-  margin-left: 8px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 16px;
-  font-family: 'Poppins',sans-serif;
-}
-.signup{
-  font-size: 15px;
-  color: white;
-  font-family: 'Poppins',sans-serif;
-}
-.signup a{
-  color: #3498db;
-  text-decoration: none;
-}
-.signup a:hover{
-  text-decoration: underline;
-}
-  #message{
-    background: #ff4e4e;
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-  }
-  #alertBox{
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
-  }
-  #errorMsg {
-    display: none;
-  }
+
+.success-screen p { font-size: 13px; color: var(--muted); }
