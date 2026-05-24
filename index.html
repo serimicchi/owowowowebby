@@ -1,5 +1,8 @@
 <!doctype html>
 <html>
+  if (localStorage.getItem('loggedIn') !== 'true') {
+  window.location.href = 'login.html';
+}
   <head>
     <title>DeSigma</title>
     <link rel="stylesheet" href="style.css">
