@@ -169,3 +169,6 @@ i span{
     transform: translateX(-50%);
     z-index: 999;
   }
+  #errorMsg {
+    display: none;
+  }
