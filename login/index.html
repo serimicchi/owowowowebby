@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <input type="text" id="username" placeholder="Username"/>
-  <input type="password" id="password" placeholder="Password"/>
-  <p id="errorMsg">Invalid username or password.</p>
-  <button onclick="handleLogin()">Login</button>
+  <div class="card">
+    <div class="login-form" id="loginForm">
+      <p class="label-tag">// welcome back</p>
+      <h1>Sign In</h1>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="your_username" autocomplete="username"/>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"/>
+      </div>
+
+      <p class="error-msg" id="errorMsg">Invalid username or password.</p>
+
+      <button onclick="handleLogin()">Enter →</button>
+
+      <p class="footer-link">
+        No account? <a href="register.html">Register here</a>
+      </p>
+    </div>
+
+    <div class="success-screen" id="successScreen">
+      <div class="checkmark">✦</div>
+      <h2>You're in.</h2>
+      <p>Redirecting you now...</p>
+    </div>
+  </div>
 
   <script src="../js/login.js"></script>
 </body>
