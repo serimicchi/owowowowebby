@@ -1,40 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login to DeSigma</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 
-    :root {
-      --bg: #0d0d0d;
-      --panel: #141414;
-      --border: #2a2a2a;
-      --accent: #c8f04a;
-      --text: #e8e8e8;
-      --muted: #555;
-      --error: #ff5f5f;
-    }
+  <input type="text" id="username" placeholder="Username"/>
+  <input type="password" id="password" placeholder="Password"/>
+  <p id="errorMsg">Invalid username or password.</p>
+  <button onclick="handleLogin()">Login</button>
 
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Mono', monospace;
-      color: var(--text);
-      overflow: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
+  <script src="../js/login.js"></script>
+</body>
+</html>        linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
       background-size: 48px 48px;
       opacity: 0.3;
