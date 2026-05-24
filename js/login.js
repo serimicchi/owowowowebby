@@ -224,7 +224,7 @@
   <script>
     const VALID_USERNAME = "meow";
     const VALID_PASSWORD = "meowza";
-    const REDIRECT_URL   = "index.html"
+    const REDIRECT_URL   = "../index.html"
     
     document.addEventListener('keydown', e => {
       if (e.key === 'Enter') handleLogin();
