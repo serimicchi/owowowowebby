@@ -1,30 +1,25 @@
-const VALID_USERNAME = "meow";
-const VALID_PASSWORD = "meowza";
-const REDIRECT_URL   = "../index.html";
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter') handleLogin();
+    function goLogin() {
+        window.location.href = "login/index.html";
+    }
+
+    function logout() {
+        localStorage.removeItem("username");
+        location.reload();
+    }
+
+    const user = localStorage.getItem("username");
+
+    if (user) {
+        document.getElementById("userInfo").innerText = "Halo, " + user;
+
+        document.getElementById("authArea").innerHTML = `
+            <button onclick="logout()" class="nav-cta">Logout</button>
+        `;
+    }
+
+    window.goLogin = goLogin;
+    window.logout = logout;
+
 });
-
-function handleLogin() {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value;
-  const errorMsg = document.getElementById('errorMsg');
-
-  if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-    localStorage.setItem('loggedIn', 'true');
-    localStorage.setItem('username', username);
-    errorMsg.classList.remove('visible');
-    document.getElementById('loginForm').classList.add('hidden');
-    document.getElementById('successScreen').classList.add('visible');
-    setTimeout(() => { window.location.href = REDIRECT_URL; }, 1500);
-  } else {
-    errorMsg.classList.add('visible');
-    document.getElementById('password').value = '';
-    document.getElementById('password').focus();
-  }
-}
-
-if (localStorage.getItem('loggedIn') === 'true') {
-  window.location.href = REDIRECT_URL;
-}
